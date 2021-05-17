@@ -1,0 +1,38 @@
+<div class="container mt-4 ">
+  <div class="row">
+
+    <%= render "books/list", user:@user %>
+
+    <div class="col-md-8 offset-md-1">
+      <h2>Books</h2>
+
+       <table class="table">
+            <thead>
+              <tr></tr>
+              <tr>
+                <th></th>
+                <th>Title</th>
+                <th>option</th>
+              </tr>
+            </thead>
+
+            <% @books.each do |book| %>
+            <tbody>
+              <tr>
+                <td>
+                  <%= link_to(user_path(book.user.id)) do %>
+                    <%= attachment_image_tag book.user, :profile_image, format: "jpeg", fallback: "no_image.jpg", size: "40x40" %>
+                  <% end %>
+                </td>
+                <td>
+                  <%= link_to  book.title, book_path(book.id)  %>
+                </td>
+                <td><%= book.body %></td>
+              </tr>
+            </tbody>
+            <% end %>
+       </table>
+
+    </div>
+  </div>
+</div>
