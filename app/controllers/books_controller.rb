@@ -4,7 +4,7 @@ class BooksController < ApplicationController
     @user = current_user
     @books = Book.all
   end
-  
+
   def create
     @book = Book.new(book_params)
     @book.user_id = current_user.id
@@ -32,7 +32,7 @@ class BooksController < ApplicationController
     if @book.update(book_params)
       redirect_to book_path(@book.id), notice: "update successfully"
     else
-      render :edit
+      render book_path(@book)
     end
   end
 

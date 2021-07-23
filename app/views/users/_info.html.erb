@@ -1,7 +1,7 @@
 <table class="table">
-    <tr>
-    <%= attachment_image_tag user, :profile_image, :fill, 60, 60, format: "jpeg", fallback: "no_image.jpg"%>
-    </tr>
+  <tr>
+  <%= attachment_image_tag user, :profile_image, :fill, 60, 60, format: "jpeg", fallback: "no_image.jpg"%>
+  </tr>
   <tr>
     <th>name</th>
     <th><%= user.name %></th>
@@ -9,6 +9,14 @@
   <tr>
     <th>introduction</th>
     <th><%= user.introduction %></th>
+  </tr>
+  <tr>
+    <th>follows</th>
+    <th><%= link_to user.followings.count, book_path(user) %></th>
+  </tr>
+  <tr>
+    <th>followers</th>
+    <th><%= link_to user.followers.count, book_path(user) %></th>
   </tr>
 </table>
 
