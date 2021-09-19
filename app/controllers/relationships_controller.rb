@@ -1,16 +1,16 @@
 class RelationshipsController < ApplicationController
-  before_action :set_user, only: [:create, :destroy]
-  
+  before_action :set_user
+
   def followings
     user = User.find(params[:user_id])
     @users = user.followings.all
   end
-    
-  def follow
+
+  def followed
     user = User.find(params[:user_id])
     @users = user.followers.all
   end
-  
+
   def create
     following = current_user.follow(@user)
     if following.save
@@ -21,7 +21,7 @@ class RelationshipsController < ApplicationController
       redirect_to request.referer
     end
   end
-  
+
   def destroy
     following = current_user.unfollow(@user)
     if following.destroy
@@ -31,10 +31,10 @@ class RelationshipsController < ApplicationController
       flash.now[:alert] = 'ユーザーのフォロー解除に失敗しました'
       redirect_to request.referer
     end
-  end  
-  
-  private 
+  end
+
+  private
   def set_user
-    @user = User.find(params[:follow_id])
+    @user = User.find(params[:user_id])
   end
 end
