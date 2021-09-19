@@ -1,5 +1,5 @@
 class RelationshipsController < ApplicationController
-  before_action :set_user
+  # before_action :set_user, only: [:create, :destroy]
 
   def followings
     user = User.find(params[:user_id])
@@ -12,7 +12,8 @@ class RelationshipsController < ApplicationController
   end
 
   def create
-    following = current_user.follow(@user)
+    user = User.find(params[:follow_id])
+    following = current_user.follow(user)
     if following.save
       flash[:success] = 'ユーザーをフォローしました'
       redirect_to request.referer
@@ -23,7 +24,8 @@ class RelationshipsController < ApplicationController
   end
 
   def destroy
-    following = current_user.unfollow(@user)
+    user = User.find(params[:follow_id])
+    following = current_user.unfollow(user)
     if following.destroy
       flash[:success] = 'ユーザーのフォーローを解除しました'
       redirect_to request.referer
@@ -33,8 +35,8 @@ class RelationshipsController < ApplicationController
     end
   end
 
-  private
-  def set_user
-    @user = User.find(params[:user_id])
-  end
+  # private
+  # def set_user
+  #   user = User.find(params[:follow_id])
+  # end
 end
