@@ -3,12 +3,12 @@
     <div class="col-md-3 ">
       <h2>User info</h2>
       <%= render "users/info", user:@book.user %>
-      
+
       <h2 class="mt-3">New book</h2>
       <%= render "layouts/error", obj:@book_new %>
-      <%= render "form", book:@book_new %>
+      <%= render "books/form", book:@book_new %>
     </div>
-    
+
     <div class="col-md-8 offset-md-1">
       <h2>Book detail</h2>
         <table class="table">
@@ -80,7 +80,8 @@
 
        <%= form_with(model: [@book, @book_comment], local:true) do |f| %>
          <div class="field pb-3">
-           <%= f.label :comment %><br />
+           </h5><%= f.label :comment %></h5>
+        <%= render "layouts/error", obj:@book_comment %>
            <%= f.text_area :comment, autofocus: true, class:"col-12 form-control" %>
          </div>
          <div class="actions pb-3">
