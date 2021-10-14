@@ -1,3 +1,4 @@
+<!--どこで使うかわからんがとりあえず保留-->
 <% unless current_user == user %>
   <% if current_user.following?(user) %>
     <%= form_with model:current_user.relationships.find_by(follow_id: user.id), method: :delete, local:true do |f| %>

@@ -8,7 +8,9 @@ Rails.application.routes.draw do
   end
 
   resources :users, only: [:index, :show, :edit, :update] do
-    resource :relationships, only: [:following, :followers]
+    get "followings" => "relationships#followings"
+    get "followers" => "relationships#followed" 
+    
     #resource 'relationships/:id', controller: 'relationships', action: 'following'
     #resource 'relationships/:id', controller: 'relationships', action: 'follow'
   end
