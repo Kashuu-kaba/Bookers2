@@ -60,4 +60,6 @@ Rails.application.configure do
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
   config.web_console.whitelisted_ips = '60.104.1.135'
+
+  config.hosts << "eb9942bc0031477c81d8c683416f6b9e.vfs.cloud9.us-east-1.amazonaws.com"
 end
