@@ -29,6 +29,7 @@
               <tr>
                 <td>
                   <%= link_to(user_path(@user.id)) do %>
+                    <%#= image_tag book.user.get_image(resize:'300x300') %>
                     <%= image_tag book.user.image.variant(resize:'300x300') %>
                   <% end %>
                 </td>

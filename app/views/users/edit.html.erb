@@ -6,7 +6,8 @@
        <%= form_with model:@user, local:true do |f| %>
           <div class="form-group">
             <label class="inputimage">Name</label>
-            <%= f.text_field :name, autofocus:true, type:"name",class:"form-control",id:"inputName"%>
+            <%#= f.text_field :name, autofocus:true, type:"name",class:"form-control",id:"inputName"%>
+            <input class="form-control" type="text" value=<%= @user.name %> >
           </div>
 
           <div class="form-group">

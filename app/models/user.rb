@@ -31,23 +31,25 @@ class User < ApplicationRecord
 
   validates :name, uniqueness: true, length: {minimum: 2, maximum: 20}
   validates :introduction, length: {maximum: 50}
-  validate :image_type
+  # validate :image_type
 
 
-  def get_image
+  def get_image  #(size)
     unless image.attached?
       file_path = Rails.root.join('app/assets/images/no_image.jpg')
       image.attach(io: File.open(file_path), filename: 'default-image.jpg', content_type: 'image/jpeg')
     end
-    image
+      image
+      #image.variant(size)
+      #<%= @string.force_encoding("utf-8") %>
   end
 
-  private
-  def image_type
-    if !image.blob.content_type.in?(%('image/jpeg image/png'))
-      image.purge # Rails6では、この1行は必要ない
-      errors.add(:image, 'はJPEGまたはPNG形式を選択してアップロードしてください')
-    end
-  end
+  # private
+  # def image_type
+  #   if !image.blob.image_type.in?(%('image/jpeg image/png'))
+  #     image.purge # Rails6では、この1行は必要ない
+  #     errors.add(:image, 'はJPEGまたはPNG形式を選択してアップロードしてください')
+  #   end
+  # end
 
 end

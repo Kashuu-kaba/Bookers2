@@ -1,6 +1,8 @@
 <table class="table">
   <tr>
-  <%= image_tag user.image.variant(resize:'300x300') %>
+    <%#= attachment_image_tag user, :profile_image, :fill, 60, 60, format: "jpeg", fallback: "no_image.jpg"%>
+    <%#= image_tag user.get_image(resize:'300x300') %>
+    <%= image_tag user.get_image %>
   </tr>
   <tr>
     <th>name</th>
